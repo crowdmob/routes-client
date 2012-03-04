@@ -18,7 +18,7 @@ module Routes
       #
       module UrlHelpers
         def self.remove_helpers!
-          self.instance_methods.map(&:to_s).grep(/_(url|path)$/).each do |method|
+          self.instance_methods.map(&:to_s).grep(/_url$/).each do |method|
             remove_method method
           end
         end
