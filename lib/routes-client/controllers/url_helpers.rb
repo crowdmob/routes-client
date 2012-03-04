@@ -24,7 +24,7 @@ module Routes
         end
 
         def self.generate_helpers!(routes=nil)
-          if routes.empty? do
+          if routes.empty?
             require 'open-uri'
             mappings = ActiveSupport::JSON.decode(open(Routes::Client::SERVER + "/#{Rails.env}.json"))
             Routes::Client::URL_HELPERS.deep_copy!(mappings)
@@ -36,7 +36,7 @@ module Routes
 
             class_eval <<-URL_HELPERS, __FILE__, __LINE__ + 1
               def #{method}(*args)
-                Routes::Client::URL_HELPERS[app_name] + "/"
+                Routes::Client::URL_HELPERS['#{app_name}'] + "/"
               end
             URL_HELPERS
           end
