@@ -26,8 +26,8 @@ module Routes
         def self.generate_helpers!(routes=nil)
           routes ||= begin
             require 'open-uri'
-            mappings = ActiveSupport::JSON.decode(open(Routes::Client::SERVER) + "/#{ENV["RAILS_ENV"]}.json")
-            Routes::Client::URL_HELPERS.slice(*mappings)
+            mappings = ActiveSupport::JSON.decode(open(Routes::Client::SERVER + "/#{Rails.env}.json"))
+            Routes::Client::URL_HELPERS.deep_merge!(mappings)
           end
 
           routes.each do |app_name, host|
