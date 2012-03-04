@@ -27,7 +27,7 @@ module Routes
           if routes.empty?
             require 'open-uri'
             mappings = ActiveSupport::JSON.decode(open(Routes::Client::SERVER + "/#{Rails.env}.json"))
-            Routes::Client::URL_HELPERS.deep_copy!(mappings)
+            Routes::Client::URL_HELPERS.merge!(mappings)
             routes = Routes::Client::URL_HELPERS
           end
 
