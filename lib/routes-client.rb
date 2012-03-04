@@ -9,17 +9,17 @@ module Routes
     
     # Host to lookup routes
     SERVER = 'http://cm-routes.herokuapp.com'
-    
     URL_HELPERS = ActiveSupport::OrderedHash.new
     
-    # The router Routes::Client should use to generate routes. Defaults
-    # to :main_app. Should be overriden by engines in order
-    # to provide custom routes.
-    mattr_accessor :router_name
-    @@router_name = nil
-    
-    def self.available_router_name
-      router_name || :main_app
+    # Include helpers in the given scope to ActionController and ActionView.
+    def self.include_url_helpers(scope)
+      ActiveSupport.on_load(:action_controller) do
+        include scope::UrlHelpers
+      end
+
+      ActiveSupport.on_load(:action_view) do
+        include scope::UrlHelpers
+      end
     end
   end
 end
