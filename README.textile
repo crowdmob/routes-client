@@ -1,0 +1,18 @@
+h1. CrowdMob Routes Client
+
+This gem creates Url Helpers within your rails app, according to the environment it's running in.  
+</pre>
+
+h2. Installation
+
+Install the @routes-client@ gem in your application with: 
+
+<pre>
+  gem 'routes-client', :git => 'git@github.com:crowdmob/routes-client.git'
+</pre>
+
+h2. Usage 
+
+This loads several url helpers to your application.  They are defined by the apps defined in the hosted json file. The Url Helpers come in the form of:
+
+@crowdmob_#{app_name}_url@
