@@ -1,4 +1,4 @@
-require "controllers/url_helpers"
+require "routes-client/controllers/url_helpers"
 
 module Routes
   module Client
