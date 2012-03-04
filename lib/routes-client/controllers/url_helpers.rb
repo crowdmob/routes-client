@@ -24,10 +24,11 @@ module Routes
         end
 
         def self.generate_helpers!(routes=nil)
-          routes ||= begin
+          if routes.empty? do
             require 'open-uri'
             mappings = ActiveSupport::JSON.decode(open(Routes::Client::SERVER + "/#{Rails.env}.json"))
-            Routes::Client::URL_HELPERS = mappings.dup
+            Routes::Client::URL_HELPERS.deep_copy!(mappings)
+            routes = Routes::Client::URL_HELPERS
           end
 
           routes.each do |app_name, host|
