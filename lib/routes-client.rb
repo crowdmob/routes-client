@@ -23,3 +23,5 @@ module Routes
     end
   end
 end
+
+require 'routes-client/railtie'
