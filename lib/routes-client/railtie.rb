@@ -1,3 +1,5 @@
+require "controllers/url_helpers"
+
 module Routes
   module Client
     class Railtie < Rails::Railtie
