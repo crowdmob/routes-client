@@ -5,11 +5,11 @@ module Routes
     class Railtie < Rails::Railtie
       initializer "routes-client.url_helpers" do
         ActiveSupport.on_load(:action_controller) do
-          include Routes::Client::UrlHelpers
+          include Routes::Client::Controllers::UrlHelpers
         end
 
         ActiveSupport.on_load(:action_view) do
-          include Routes::Client::UrlHelpers
+          include Routes::Client::Controllers::UrlHelpers
         end
       end
     end
