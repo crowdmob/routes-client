@@ -36,7 +36,7 @@ module Routes
 
             class_eval <<-URL_HELPERS, __FILE__, __LINE__ + 1
               def #{method}(*args)
-                Routes::Client::URL_HELPERS['#{app_name}'] + "/"
+                Routes::Client::URL_HELPERS['#{app_name}'] + ""
               end
             URL_HELPERS
           end
